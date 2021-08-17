@@ -43,10 +43,12 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 27017
+  - name: "27017"
+    port: 27017
     targetPort: 27017
     protocol: TCP
-  - port: 28017
+  - name: "28017"
+    port: 28017
     targetPort: 28017
     protocol: TCP
   selector:
