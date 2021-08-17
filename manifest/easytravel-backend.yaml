@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-backend
+  namespace: easytravel
+  labels:
+    app: easytravel-k8s
+    type: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: backend
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: backend
+    spec:
+      containers:
+      - name: easytravel-backend
+        image: dynatrace/easytravel-backend:2.0.0.3322
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ET_DATABASE_LOCATION
+          value: easytravel-mongodb:27017
+        - name: ET_MONGO_AUTH_DB
+          value: admin
+        - name: ET_DATABASE_USER
+          value: etAdmin
+        - name: ET_DATABASE_PASSWORD
+          value: adminadmin
+        resources:
+          limits:
+            cpu: 400m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: easytravel-backend
+  namespace: easytravel
+  labels:
+    app: easytravel-k8s
+    type: backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: easytravel-k8s
+    type: backend
