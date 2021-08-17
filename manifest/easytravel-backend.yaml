@@ -24,6 +24,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        - name: CATALINA_OPTS
+          value: -Dconfig.apmServerDefault=APM -Xmx300m
         - name: ET_DATABASE_LOCATION
           value: easytravel-mongodb:27017
         - name: ET_MONGO_AUTH_DB
