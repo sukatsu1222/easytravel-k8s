@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-headless-loadgen
+  namespace: easytravel
+  labels:
+    app: easytravel-k8s
+    type: headless-loadgen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: headless-loadgen
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: headless-loadgen
+    spec:
+      containers:
+      - name: easytravel-headless-loadgen
+        image: dynatrace/easytravel-headless-loadgen:2.0.0.3322
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ET_APM_SERVER_DEFAULT
+          value: APM
+        - name: ET_ANGULAR_FRONTEND_URL
+          value: http://easytravel-www:9079
+        resources:
+          limits:
+            cpu: 800m
+            memory: 1024Mi
+          requests:
+            cpu: 400m
+            memory: 512Mi
