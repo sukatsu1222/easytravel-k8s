@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-angular-frontend
+  namespace: easytravel
+  labels:
+    app: easytravel-k8s
+    type: angular-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: angular-frontend
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: angular-frontend
+    spec:
+      containers:
+      - name: easytravel-angular-frontend
+        image: dynatrace/easytravel-angular-frontend:2.0.0.3322
+        ports:
+        - containerPort: 8080
+        env:
+        - name: CATALINA_OPTS
+          value: -Dconfig.apmServerDefault=APM -Xmx525m
+        - name: ET_BACKEND_URL
+          value: http://easytravel-backend:8080
+        resources:
+          limits:
+            cpu: 400m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: easytravel-angular-frontend
+  namespace: easytravel
+  labels:
+    app: easytravel-k8s
+    type: angular-frontend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: easytravel-k8s
+    type: angular-frontend
