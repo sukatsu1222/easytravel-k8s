@@ -14,6 +14,6 @@ kubectl apply -f manifest/easytravel-www.yaml
 
 ## Access EasyTravel
 
-Access class easytravel: `http://<IP Address of Node>:30080`
-Access angular easytravel: `http://<IP Address of Node>:30081`
+* Access class easytravel: `http://<IP Address of Node>:30080`
+* Access angular easytravel: `http://<IP Address of Node>:30081`
 
