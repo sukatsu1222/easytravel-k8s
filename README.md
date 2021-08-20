@@ -8,8 +8,8 @@ kubectl apply -f manifest/easytravel-mongodb.yaml
 kubectl apply -f manifest/easytravel-backend.yaml
 kubectl apply -f manifest/easytravel-frontend.yaml
 kubectl apply -f manifest/easytravel-angular-frontend.yaml
-kubectl apply -f manifest/easytravel-headless-loadgen.yaml
 kubectl apply -f manifest/easytravel-www.yaml
+kubectl apply -f manifest/easytravel-headless-loadgen.yaml
 ```
 
 ## Access EasyTravel
