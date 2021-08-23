@@ -1,19 +1,15 @@
 # easytravel on Kubernetes
 
-## Start EasyTravel
+Demo application for Kubernetes. This has been tested on GKE.
+
+## Deployment
+
+Clone this repo, then to deploy run:
 
 ```bash
-kubectl create namespace easytravel
-kubectl apply -f manifest/easytravel-mongodb.yaml
-kubectl apply -f manifest/easytravel-backend.yaml
-kubectl apply -f manifest/easytravel-frontend.yaml
-kubectl apply -f manifest/easytravel-angular-frontend.yaml
-kubectl apply -f manifest/easytravel-www.yaml
-kubectl apply -f manifest/easytravel-headless-loadgen.yaml
+./deploy-easytravel.sh
 ```
 
 ## Access EasyTravel
 
-* Access class easytravel: `http://<IP Address of Node>:30080`
-* Access angular easytravel: `http://<IP Address of Node>:30081`
-
+2 services, Classic and Angular easytravel, will be exposed as `type: LoadBalancer`.

@@ -23,7 +23,7 @@ spec:
         image: dynatrace/easytravel-nginx:2.0.0.3322
         ports:
         - containerPort: 80
-        - containerPort: 9079
+        - containerPort: 8080
         env:
         - name: ET_FRONTEND_LOCATION
           value: easytravel-frontend:8080

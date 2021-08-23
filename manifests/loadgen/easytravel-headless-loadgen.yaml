@@ -25,7 +25,7 @@ spec:
         - containerPort: 8080
         env:
         - name: ET_ANGULAR_FRONTEND_URL
-          value: http://easytravel-www:9079
+          value: http://easytravel-angular-frontend:80
         - name: ET_APM_SERVER_DEFAULT
           value: APM
         resources:
