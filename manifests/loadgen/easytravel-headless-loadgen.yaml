@@ -24,10 +24,10 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: ET_APM_SERVER_DEFAULT
-          value: APM
         - name: ET_ANGULAR_FRONTEND_URL
           value: http://easytravel-www:9079
+        - name: ET_APM_SERVER_DEFAULT
+          value: APM
         resources:
           limits:
             cpu: 800m

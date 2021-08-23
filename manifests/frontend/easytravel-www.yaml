@@ -27,8 +27,6 @@ spec:
         env:
         - name: ET_FRONTEND_LOCATION
           value: easytravel-frontend:8080
-        - name: ET_ANGULAR_FRONTEND_LOCATION
-          value: easytravel-angular-frontend:8080
         - name: ET_BACKEND_LOCATION
           value: easytravel-backend:8080
         resources:
@@ -48,16 +46,14 @@ metadata:
     app: easytravel-k8s
     type: www
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - name: frontend
     port: 80
     targetPort: 80
-    nodePort: 30080
-  - name: angular-frontend
-    port: 9079
-    targetPort: 9079
-    nodePort: 30081
+  - name: backend
+    port: 8080
+    targetPort: 8080
   selector:
     app: easytravel-k8s
     type: www

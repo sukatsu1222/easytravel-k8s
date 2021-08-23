@@ -45,9 +45,10 @@ metadata:
     app: easytravel-k8s
     type: angular-frontend
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
-  - port: 8080
+  - name: frontend
+    port: 80
     targetPort: 8080
   selector:
     app: easytravel-k8s

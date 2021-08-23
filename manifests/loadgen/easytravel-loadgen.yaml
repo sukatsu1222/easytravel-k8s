@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-loadgen
+  namespace: easytravel
+  labels:
+    app: easytravel-k8s
+    type: loadgen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: loadgen
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: loadgen
+    spec:
+      containers:
+      - name: easytravel-loadgen
+        image: dynatrace/easytravel-loadgen:2.0.0.3322
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ET_WWW_URL
+          value: http://easytravel-www:80
+        - name: ET_BACKEND_URL
+          value: http://easytravel-backend:8080
+        - name: ET_PROBLEMS
+          value: DatabaseCleanup
+        - name: ET_PROBLEMS_DELAY
+          value: "0"
+        - name: ET_APM_SERVER_DEFAULT
+          value: APM
+        - name: ET_VISIT_NUMBER
+          value: "5"
+        resources:
+          limits:
+            cpu: 800m
+            memory: 1024Mi
+          requests:
+            cpu: 400m
+            memory: 512Mi
