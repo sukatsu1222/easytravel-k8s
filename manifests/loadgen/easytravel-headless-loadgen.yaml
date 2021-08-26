@@ -28,10 +28,14 @@ spec:
           value: http://easytravel-angular-frontend:80
         - name: ET_APM_SERVER_DEFAULT
           value: APM
+        - name: ET_PROBLEMS
+          value: DatabaseCleanup
+        - name: ET_PROBLEMS_DELAY
+          value: "0"
         resources:
           limits:
             cpu: 200m
-            memory: 256Mi
+            memory: 512Mi
           # requests:
           #   cpu: 200m
           #   memory: 256Mi
