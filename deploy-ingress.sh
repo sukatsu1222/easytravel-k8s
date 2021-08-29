@@ -13,9 +13,9 @@ if [ ${CREATE_PUBLIC} = "true" ]; then
 fi
 
 createPrivateAndPublicIngress() {
-  COMMAND=$1
-  PRIVATE_DOMAIN=$2
-  PUBLIC_DOMAIN=$3
+  COMMAND="$1"
+  PRIVATE_DOMAIN="$2"
+  PUBLIC_DOMAIN="$3"
   ${COMMAND} apply -f - <<-EOF
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -76,8 +76,8 @@ EOF
 }
 
 createIngress() {
-  COMMAND=$1
-  DOMAIN=$2
+  COMMAND="$1"
+  DOMAIN="$2"
   ${COMMAND} apply -f - <<-EOF
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -127,11 +127,11 @@ else
 fi
 
 if [ ${CREATE_PRIVATE} = "true" ] && [ ${CREATE_PUBLIC} = "true" ]; then
-  createPrivateAndPublicIngress ${COMMAND} ${PRIVATE_DOMAIN} ${PUBLIC_DOMAIN}
+  createPrivateAndPublicIngress "${COMMAND}" "${PRIVATE_DOMAIN}" "${PUBLIC_DOMAIN}"
 elif [ ${CREATE_PRIVATE} = "true" ]; then
-  createIngress ${COMMAND} ${PRIVATE_DOMAIN}
+  createIngress "${COMMAND}" "${PRIVATE_DOMAIN}"
 elif [ ${CREATE_PUBLIC} = "true" ]; then
-  createIngress ${COMMAND} ${PUBLIC_DOMAIN}
+  createIngress "${COMMAND}" "${PUBLIC_DOMAIN}"
 fi
 
 if [ ${CREATE_PRIVATE} = "true" ]; then
