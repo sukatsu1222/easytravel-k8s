@@ -24,7 +24,7 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: ET_WWW_URL
+        - name: ET_FRONTEND_URL
           value: http://easytravel-www:80
         - name: ET_BACKEND_URL
           value: http://easytravel-backend:8080
