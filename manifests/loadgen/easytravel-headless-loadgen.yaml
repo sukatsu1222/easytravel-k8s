@@ -26,6 +26,8 @@ spec:
         env:
         - name: ET_ANGULAR_FRONTEND_URL
           value: http://easytravel-angular-frontend:80
+        - name: ET_BACKEND_URL
+          value: http://easytravel-backend:8080
         - name: ET_APM_SERVER_DEFAULT
           value: APM
         - name: ET_PROBLEMS
