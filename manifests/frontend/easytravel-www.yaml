@@ -16,11 +16,13 @@ spec:
     metadata:
       labels:
         app: easytravel-k8s
+        app.kubernetes.io/part-of: easytravel
+        app.kubernetes.io/version: "1.0.0"
         type: www
     spec:
       containers:
       - name: easytravel-www
-        image: dynatrace/easytravel-nginx:2.0.0.3322
+        image: dynatrace/easytravel-nginx:2.0.0.3356
         ports:
         - containerPort: 80
         - containerPort: 8080

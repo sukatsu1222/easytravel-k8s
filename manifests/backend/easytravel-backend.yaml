@@ -16,11 +16,13 @@ spec:
     metadata:
       labels:
         app: easytravel-k8s
+        app.kubernetes.io/part-of: easytravel
+        app.kubernetes.io/version: "1.0.0"
         type: backend
     spec:
       containers:
       - name: easytravel-backend
-        image: dynatrace/easytravel-backend:2.0.0.3322
+        image: dynatrace/easytravel-backend:2.0.0.3356
         ports:
         - containerPort: 8080
         env:
